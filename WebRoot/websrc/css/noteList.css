@@ -1,0 +1,33 @@
+.noteListDataView .x-panel-body{
+}
+.noteListDataView .noteItem{
+	margin: 5px;
+	padding: 4px;
+	font-size: 12px;
+	border:solid 1px #bbbbbb;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.noteListDataView .noteTitle{
+	font-size: 14px;
+	font-weight: bold;
+}
+.noteListDataView .noteTime{
+	font-size: 12px;
+	color: #666666;
+	margin: 5px 0px 5px 0px;
+}
+.noteListDataView .noteCategory{
+	font-size: 12px;
+	color: #666666;
+}
+
+.noteListDataView .x-view-over{
+	padding: 3px;
+	border: solid 2px #999999;
+}
+
+.noteListDataView .x-view-selected{
+	padding: 3px;
+	border: solid 2px #6688EE;
+}

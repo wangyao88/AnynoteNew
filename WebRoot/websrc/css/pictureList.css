@@ -1,0 +1,69 @@
+.pictureDataViewDiv .x-panel-body{
+	background: white;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+.pictureDataViewDiv .thumb{
+	#position:relative;
+	#top:-50%;
+	#left:-50%;
+}
+.pictureDataViewDiv .thumb img{
+	padding: 2px;
+	border: solid 1px #d0d0d0;
+}
+.pictureDataViewDiv .thumb-subwrap{
+	display:table-cell;
+	vertical-align:middle;
+	#position:absolute;
+	#top:50%;
+}
+.pictureDataViewDiv .thumb-wrap{
+	#position:relative;
+	display:table;
+	overflow:hidden;
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+	width: 175px;
+	height: 175px;
+	text-align: center;
+}
+.pictureDataViewDiv .thumb-wrap span{
+	display: block;
+	overflow: hidden;
+	text-align: center;
+}
+
+.pictureDataViewDiv .x-view-over{
+    border:1px solid #d0d0d0;
+    background: #efefef;
+	padding: 4px;
+}
+
+.pictureDataViewDiv .x-view-selected{
+	background: #efefef;
+	border:1px solid #d0d0d0;
+	padding: 4px;
+}
+.pictureDataViewDiv .x-view-selected .thumb{
+	background:transparent;
+}
+
+.pictureDataViewDiv .loading-indicator {
+	font-size:11px;
+	background-image:url('../image/loading.gif');
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left:20px;
+	margin:10px;
+}
+
+/*鼠标样式-下一张*/
+.cursorRight{
+	cursor:url(../image/right.cur),default;
+}
+/*鼠标样式-上一张*/
+.cursorLeft{
+	cursor:url(../image/left.cur),default;
+}

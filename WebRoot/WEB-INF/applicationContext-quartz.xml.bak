@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- 要调用的工作类 -->
+	<bean id="quartzJob" class="com.sxkl.loginHistory.quartz.LoginHistoryQuartzJob">
+	</bean>
+	<!-- 可继续加新的任务   -->
+	<!-- 要调用的工作类结束 -->
+
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="jobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzJob" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>setLoginOutTime</value>
+		</property>
+	</bean>
+	<!-- 可继续加新的   -->
+	<!-- 定义调用对象和调用对象的方法结束 -->
+
+	<!-- 定义触发时间 -->
+	<bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobtask" />
+		</property>
+		<!-- cron表达式 此处定义为一直触发执行任务 -->
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	<!-- 可继续加新的   -->
+	<!-- 定义触发时间结束 -->
+
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序   -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="doTime" />
+				<!-- 可继续加新的   -->
+			</list>
+		</property>
+	</bean>
+	<!-- 总管理类结束   -->
+</beans> 
